@@ -28,6 +28,14 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: DownloadSecureFile@1
+      name: settings_xml
+      inputs:
+        secureFile: settings.xml
+    - task: DownloadSecureFile@1
+      name: license
+      inputs:
+        secureFile: license
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
